@@ -1,0 +1,511 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  line-height: 1.5;
+  color: #1a1a1a;
+  background: #f5f5f5;
+}
+
+.app {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+header h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.5rem;
+}
+
+.subtitle {
+  margin: 0 0 1.5rem;
+  color: #555;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tab {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  color: #1a1a1a;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-align: left;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.tab-label {
+  font-weight: 600;
+  color: inherit;
+}
+
+.tab-description {
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.3;
+  opacity: 0.9;
+}
+
+/* Schema — blue */
+.tab-schema {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: #1e40af;
+}
+
+.tab-schema.active {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  color: #fff;
+}
+
+/* Ingest — teal */
+.tab-ingest {
+  background: #f0fdfa;
+  border-color: #99f6e4;
+  color: #0f766e;
+}
+
+.tab-ingest.active {
+  background: #14b8a6;
+  border-color: #14b8a6;
+  color: #fff;
+}
+
+/* Dashboard — violet */
+.tab-dashboard {
+  background: #ede9fe;
+  border-color: #c4b5fd;
+  color: #5b21b6;
+}
+
+.tab-dashboard.active {
+  background: #8b5cf6;
+  border-color: #8b5cf6;
+  color: #fff;
+}
+
+/* View — amber */
+.tab-view {
+  background: #fffbeb;
+  border-color: #fde68a;
+  color: #b45309;
+}
+
+.tab-view.active {
+  background: #f59e0b;
+  border-color: #f59e0b;
+  color: #fff;
+}
+
+.tab-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 0;
+  align-items: stretch;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.sidebar {
+  padding: 1rem;
+  font-size: 0.85rem;
+}
+
+.sidebar h3 {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+}
+
+.sidebar ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.sidebar li {
+  margin-bottom: 0.5rem;
+}
+
+.tab-content {
+  min-width: 0;
+  padding: 1.25rem;
+}
+
+.card {
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+.card h2 {
+  margin: 0 0 1rem;
+  font-size: 1.15rem;
+}
+
+/* Workflow panel themes — unified soft fill across sidebar + form */
+.workflow-schema .tab-layout {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+}
+
+.workflow-schema .sidebar {
+  color: #1e3a5f;
+  border-right: 1px solid #bfdbfe;
+}
+
+.workflow-schema button[type="submit"] {
+  background: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.workflow-ingest .tab-layout {
+  background: #f0fdfa;
+  border: 1px solid #99f6e4;
+}
+
+.workflow-ingest .sidebar {
+  color: #134e4a;
+  border-right: 1px solid #99f6e4;
+}
+
+.workflow-ingest button[type="submit"] {
+  background: #14b8a6;
+  border-color: #14b8a6;
+}
+
+.workflow-dashboard .tab-layout,
+.workflow-dashboard .sidebar,
+.workflow-dashboard .tab-content {
+  background: #ede9fe;
+}
+
+.workflow-dashboard .tab-layout {
+  border: 1px solid #c4b5fd;
+}
+
+.workflow-dashboard .sidebar {
+  color: #4c1d95;
+  border-right: 1px solid #c4b5fd;
+}
+
+.workflow-dashboard fieldset {
+  background: rgba(221, 214, 254, 0.45);
+  border-color: #c4b5fd;
+}
+
+.workflow-dashboard .view-block {
+  background: rgba(196, 181, 253, 0.2);
+  border-color: #c4b5fd;
+}
+
+.workflow-dashboard .form-section {
+  border-bottom-color: #c4b5fd;
+}
+
+.workflow-dashboard button[type="submit"] {
+  background: #8b5cf6;
+  border-color: #8b5cf6;
+}
+
+.workflow-view .tab-layout {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+}
+
+.workflow-view .sidebar {
+  color: #78350f;
+  border-right: 1px solid #fde68a;
+}
+
+.workflow-view button[type="submit"] {
+  background: #f59e0b;
+  border-color: #f59e0b;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.section-heading {
+  margin: 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+input[type="text"],
+textarea,
+select {
+  padding: 0.5rem 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font: inherit;
+  background: #fff;
+}
+
+textarea {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 0.85rem;
+  resize: vertical;
+}
+
+fieldset {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 1rem;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+legend {
+  font-weight: 600;
+  padding: 0 0.25rem;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 100px auto auto auto;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.checkbox-label {
+  flex-direction: row;
+  align-items: center;
+  font-weight: 400;
+  gap: 0.35rem;
+}
+
+.view-type-section {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.view-type-section:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.view-type-header {
+  margin-bottom: 0.75rem;
+}
+
+.view-type-header h4 {
+  margin: 0 0 0.25rem;
+  font-size: 0.95rem;
+}
+
+.section-hint {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #666;
+  font-weight: 400;
+}
+
+.view-block {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.workflow-dashboard .view-block-summary {
+  border-left: 3px solid #8b5cf6;
+}
+
+.workflow-dashboard .view-block-table {
+  border-left: 3px solid #a78bfa;
+}
+
+.view-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #555;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #2563eb;
+  border-radius: 4px;
+  background: #2563eb;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-add {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #047857;
+}
+
+.btn-add:hover:not(:disabled) {
+  background: #d1fae5;
+  border-color: #6ee7b7;
+}
+
+.btn-remove {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #b91c1c;
+}
+
+.btn-remove:hover:not(:disabled) {
+  background: #fee2e2;
+  border-color: #fca5a5;
+}
+
+.inline-form {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.feedback {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.feedback-success {
+  background: #ecfdf5;
+  border: 1px solid #6ee7b7;
+  color: #065f46;
+}
+
+.feedback-error {
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  color: #991b1b;
+}
+
+.feedback-warning {
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  color: #92400e;
+}
+
+.feedback p {
+  margin: 0.25rem 0 0;
+}
+
+.error-list {
+  margin: 0.5rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.dashboard-result {
+  margin-top: 1.5rem;
+}
+
+.dashboard-result h3 {
+  margin: 0 0 0.75rem;
+}
+
+.summary-view {
+  margin-bottom: 1.5rem;
+}
+
+.summary-value {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 0.25rem 0 0;
+}
+
+.table-view {
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  background: #fff;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+th {
+  background: #f9fafb;
+  font-weight: 600;
+}
+
+.muted {
+  color: #666;
+  font-style: italic;
+}
+
+@media (max-width: 900px) {
+  .tabs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tab-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .tabs {
+    grid-template-columns: 1fr;
+  }
+
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+}
